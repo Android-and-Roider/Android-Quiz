@@ -1,4 +1,4 @@
-package com.example.androidstudyproject
+package com.example.androidstudyproject.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.example.androidstudyproject.data.Food
@@ -11,8 +11,8 @@ class MainViewModel : ViewModel() {
 
     private val mainRepository = MainRepository()
 
-    private var _food: List<Food>? = null
-    val food: List<Food>?
+    private var _food: MutableList<Food>? = null
+    val food: MutableList<Food>?
         get() = _food
 
     fun insertFood(food: Food) {
@@ -27,28 +27,28 @@ class MainViewModel : ViewModel() {
         }
     }
 
-    fun selectByCategory(category: String): List<Food>? {
+    fun selectByCategory(category: String): MutableList<Food>? {
         CoroutineScope(Dispatchers.IO).launch {
             _food = mainRepository.db!!.foodDao().selectByCategory(category)
         }
         return food
     }
 
-    fun selectByMeat(meat:Boolean): List<Food>? {
+    fun selectByMeat(meat:Boolean): MutableList<Food>? {
         CoroutineScope(Dispatchers.IO).launch {
             _food = mainRepository.db!!.foodDao().selectByMeat(meat)
         }
         return food
     }
 
-    fun selectByFruit(fruit:Boolean): List<Food>? {
+    fun selectByFruit(fruit:Boolean): MutableList<Food>? {
         CoroutineScope(Dispatchers.IO).launch {
             _food = mainRepository.db!!.foodDao().selectByFruit(fruit)
         }
         return food
     }
 
-    fun selectByDiary(diary:Boolean): List<Food>? {
+    fun selectByDiary(diary:Boolean): MutableList<Food>? {
         CoroutineScope(Dispatchers.IO).launch {
             _food = mainRepository.db!!.foodDao().selectByDairy(diary)
         }

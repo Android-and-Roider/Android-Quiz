@@ -13,15 +13,15 @@ interface FoodDao {
     fun delete(food: Food)
 
     @Query("SELECT * FROM Food WHERE category = :category")
-    fun selectByCategory(category: String): List<Food>?
+    fun selectByCategory(category: String): MutableList<Food>?
 
     @Query("SELECT * FROM Food WHERE is_meat = :meat")
-    fun selectByMeat(meat: Boolean): List<Food>?
+    fun selectByMeat(meat: Boolean): MutableList<Food>?
 
     @Query("SELECT * FROM Food WHERE is_fruit = :fruit")
-    fun selectByFruit(fruit: Boolean): List<Food>?
+    fun selectByFruit(fruit: Boolean): MutableList<Food>?
 
     @Query("SELECT * FROM Food WHERE is_dairy_product = :diary")
-    fun selectByDairy(diary: Boolean): List<Food>?
+    fun selectByDairy(diary: Boolean): MutableList<Food>?
 
 }
