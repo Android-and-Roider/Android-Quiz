@@ -5,12 +5,16 @@
       <map>
         <entry key="..\:/Users/rldkv/AndroidStudioProjects/AndroidstudyProject/app/src/main/res/layout/activity_main.xml" value="0.23125" />
         <entry key="..\:/Users/rldkv/AndroidStudioProjects/AndroidstudyProject/app/src/main/res/layout/activity_splash.xml" value="0.23125" />
+        <entry key="..\:/Users/rldkv/Documents/GitHub/Android-Quiz/AndroidstudyProject/app/src/main/res/drawable/ic_baseline_add.xml" value="0.183" />
         <entry key="..\:/Users/rldkv/Documents/GitHub/Android-Quiz/AndroidstudyProject/app/src/main/res/layout/activity_list.xml" value="0.23125" />
         <entry key="..\:/Users/rldkv/Documents/GitHub/Android-Quiz/AndroidstudyProject/app/src/main/res/layout/activity_main.xml" value="0.23125" />
         <entry key="..\:/Users/rldkv/Documents/GitHub/Android-Quiz/AndroidstudyProject/app/src/main/res/layout/activity_menu.xml" value="0.23125" />
         <entry key="..\:/Users/rldkv/Documents/GitHub/Android-Quiz/AndroidstudyProject/app/src/main/res/layout/activity_raffle.xml" value="0.23020833333333332" />
+        <entry key="..\:/Users/rldkv/Documents/GitHub/Android-Quiz/AndroidstudyProject/app/src/main/res/layout/activity_splash.xml" value="0.23125" />
+        <entry key="..\:/Users/rldkv/Documents/GitHub/Android-Quiz/AndroidstudyProject/app/src/main/res/layout/dialog_add.xml" value="0.23020833333333332" />
         <entry key="..\:/Users/rldkv/Documents/GitHub/Android-Quiz/AndroidstudyProject/app/src/main/res/layout/item_menu.xml" value="0.23125" />
         <entry key="..\:/Users/rldkv/Documents/GitHub/Android-Quiz/AndroidstudyProject/app/src/main/res/menu/list_menu.xml" value="0.23020833333333332" />
+        <entry key="..\:/Users/rldkv/Documents/GitHub/Android-Quiz/AndroidstudyProject/app/src/main/res/menu/list_popup.xml" value="0.23020833333333332" />
       </map>
     </option>
   </component>

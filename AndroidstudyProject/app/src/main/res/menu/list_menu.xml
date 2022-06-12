@@ -12,6 +12,5 @@
         android:id="@+id/item_add"
         android:icon="@drawable/ic_baseline_add"
         android:title="add"
-        app:actionViewClass="android.widget.Button"
         app:showAsAction="always" />
 </menu>
