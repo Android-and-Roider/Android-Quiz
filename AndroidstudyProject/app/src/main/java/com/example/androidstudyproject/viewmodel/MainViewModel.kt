@@ -1,5 +1,7 @@
 package com.example.androidstudyproject.viewmodel
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.androidstudyproject.App
@@ -16,6 +18,14 @@ class MainViewModel : ViewModel() {
 
     var food = mainRepository.allFood
 
+    private val _selectedFood = MutableLiveData<Food>()
+    val selectedFood: LiveData<Food>
+        get() = _selectedFood
+
+    private val _isLoading = MutableLiveData(false)
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
+
     fun insertFood(food: Food) = viewModelScope.launch(Dispatchers.IO) {
         mainRepository.insert(food)
     }
@@ -24,32 +34,17 @@ class MainViewModel : ViewModel() {
         mainRepository.delete(food)
     }
 
-
-//    fun selectByCategory(category: String): LiveData<List<Food>> {
-//        viewModelScope.launch(Dispatchers.IO) {
-//            food = selectByCategory(category)
-//        }
-//    }
-//
-//    fun selectByMeat(meat: Boolean): LiveData<List<Food>>? {
-//        viewModelScope.launch(Dispatchers.IO) {
-//            _food = mainRepository.db!!.foodDao().selectByMeat(meat)
-//        }
-//        return food
-//    }
-//
-//    fun selectByFruit(fruit: Boolean): LiveData<List<Food>>? {
-//        viewModelScope.launch(Dispatchers.IO) {
-//            _food = mainRepository.db!!.foodDao().selectByFruit(fruit)
-//        }
-//        return food
-//    }
-//
-//    fun selectByDiary(diary: Boolean): LiveData<List<Food>>? {
-//        CoroutineScope(Dispatchers.IO).launch {
-//            _food = mainRepository.db!!.foodDao().selectByDairy(diary)
-//        }
-//        return food
-//    }
+    fun makeRandom() {
+        viewModelScope.launch(Dispatchers.IO) {
+            _isLoading.postValue(true)
+            runCatching {
+                _selectedFood.postValue(mainRepository.select())
+            }.onSuccess {
+                _isLoading.postValue(false)
+            }.onFailure {
+                _isLoading.postValue(false)
+            }
+        }
+    }
 
 }

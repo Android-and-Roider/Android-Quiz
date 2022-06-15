@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
                 startActivity(this)
             }
         }
-
         binding.btnStartChoose.setOnClickListener {
             val intent = Intent(this, RaffleActivity::class.java).apply {
                 startActivity(this)

@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight"
         tools:targetApi="31">
-        <activity android:name=".view.MainActivity"/>
+        <activity android:name=".view.MainActivity" />
         <activity
             android:name=".view.SplashActivity"
             android:exported="true">
@@ -24,8 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.ListActivity"/>
-        <activity android:name=".view.RaffleActivity"/>
+        <activity android:name=".view.ListActivity" />
+        <activity android:name=".view.RaffleActivity" />
     </application>
 
 </manifest>

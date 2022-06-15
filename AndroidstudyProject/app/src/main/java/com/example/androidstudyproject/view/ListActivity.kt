@@ -47,7 +47,7 @@ class ListActivity : AppCompatActivity() {
         subscribeToObservables()
 
         binding.listMenu.adapter = adapter
-        overridePendingTransition(R.anim.slide_enter,R.anim.none)
+        /*overridePendingTransition(R.anim.slide_enter,R.anim.none)*/
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -59,7 +59,7 @@ class ListActivity : AppCompatActivity() {
         when (item?.itemId) {
             android.R.id.home -> {
                 finish()
-                overridePendingTransition(R.anim.none,R.anim.slide_down)
+                /*overridePendingTransition(R.anim.none,R.anim.slide_down)*/
                 return true
             }
             R.id.item_add -> {

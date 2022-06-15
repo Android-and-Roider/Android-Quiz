@@ -8,6 +8,7 @@ import androidx.room.Query
 
 @Dao
 interface FoodDao {
+
     @Query("SELECT * FROM Food")
     fun getAll(): LiveData<List<Food>>
 
@@ -17,16 +18,11 @@ interface FoodDao {
     @Delete
     fun delete(food: Food)
 
-//    @Query("SELECT * FROM Food WHERE category = :category")
-//    fun selectByCategory(category: String): MutableLiveData<List<Food>>?
-//
-//    @Query("SELECT * FROM Food WHERE is_meat = :meat")
-//    fun selectByMeat(meat: Boolean): MutableLiveData<List<Food>>?
-//
-//    @Query("SELECT * FROM Food WHERE is_fruit = :fruit")
-//    fun selectByFruit(fruit: Boolean): MutableLiveData<List<Food>>?
-//
-//    @Query("SELECT * FROM Food WHERE is_dairy_product = :diary")
-//    fun selectByDairy(diary: Boolean): MutableLiveData<List<Food>>?
+    @Query("SELECT * FROM Food ORDER BY RANDOM() LIMIT 1")
+    fun getRandom(): Food
+
+    /*  @Query("SELECT * FROM food WHERE is_fruit = :b AND is_dairy_product  ")
+      fun tmp(a: String, b: Boolean, c: Boolean)*/
+    // Todo<알아서 해라>
 
 }
