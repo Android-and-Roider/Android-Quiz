@@ -1,58 +1,55 @@
 package com.example.androidstudyproject.viewmodel
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.androidstudyproject.App
 import com.example.androidstudyproject.data.Food
+import com.example.androidstudyproject.data.FoodDatabase
 import com.example.androidstudyproject.data.MainRepository
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
 
-    private val mainRepository = MainRepository()
+    private val mainRepository =
+        MainRepository(FoodDatabase.getInstance(App.instance, viewModelScope))
 
-    private var _food: MutableList<Food>? = null
-    val food: MutableList<Food>?
-        get() = _food
+    var food = mainRepository.allFood
 
-    fun insertFood(food: Food) {
-        CoroutineScope(Dispatchers.IO).launch {
-            mainRepository.db!!.foodDao().insert(food)
-        }
+    fun insertFood(food: Food) = viewModelScope.launch(Dispatchers.IO) {
+        mainRepository.insert(food)
     }
 
-    fun deleteFood(food: Food) {
-        CoroutineScope(Dispatchers.IO).launch {
-            mainRepository.db!!.foodDao().delete(food)
-        }
+    fun deleteFood(food: Food) = viewModelScope.launch(Dispatchers.IO) {
+        mainRepository.delete(food)
     }
 
-    fun selectByCategory(category: String): MutableList<Food>? {
-        CoroutineScope(Dispatchers.IO).launch {
-            _food = mainRepository.db!!.foodDao().selectByCategory(category)
-        }
-        return food
-    }
 
-    fun selectByMeat(meat:Boolean): MutableList<Food>? {
-        CoroutineScope(Dispatchers.IO).launch {
-            _food = mainRepository.db!!.foodDao().selectByMeat(meat)
-        }
-        return food
-    }
-
-    fun selectByFruit(fruit:Boolean): MutableList<Food>? {
-        CoroutineScope(Dispatchers.IO).launch {
-            _food = mainRepository.db!!.foodDao().selectByFruit(fruit)
-        }
-        return food
-    }
-
-    fun selectByDiary(diary:Boolean): MutableList<Food>? {
-        CoroutineScope(Dispatchers.IO).launch {
-            _food = mainRepository.db!!.foodDao().selectByDairy(diary)
-        }
-        return food
-    }
+//    fun selectByCategory(category: String): LiveData<List<Food>> {
+//        viewModelScope.launch(Dispatchers.IO) {
+//            food = selectByCategory(category)
+//        }
+//    }
+//
+//    fun selectByMeat(meat: Boolean): LiveData<List<Food>>? {
+//        viewModelScope.launch(Dispatchers.IO) {
+//            _food = mainRepository.db!!.foodDao().selectByMeat(meat)
+//        }
+//        return food
+//    }
+//
+//    fun selectByFruit(fruit: Boolean): LiveData<List<Food>>? {
+//        viewModelScope.launch(Dispatchers.IO) {
+//            _food = mainRepository.db!!.foodDao().selectByFruit(fruit)
+//        }
+//        return food
+//    }
+//
+//    fun selectByDiary(diary: Boolean): LiveData<List<Food>>? {
+//        CoroutineScope(Dispatchers.IO).launch {
+//            _food = mainRepository.db!!.foodDao().selectByDairy(diary)
+//        }
+//        return food
+//    }
 
 }
