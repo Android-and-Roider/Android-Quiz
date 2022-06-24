@@ -47,4 +47,17 @@ class MainViewModel : ViewModel() {
         }
     }
 
+    fun makeDetailRandom(category: String, meat: Boolean, fruit: Boolean, diary: Boolean){
+        viewModelScope.launch(Dispatchers.IO) {
+            _isLoading.postValue(true)
+            runCatching {
+                _selectedFood.postValue(mainRepository.selectDetail(category, meat, fruit, diary))
+            }.onSuccess {
+                _isLoading.postValue(false)
+            }.onFailure {
+                _isLoading.postValue(false)
+            }
+        }
+    }
+
 }

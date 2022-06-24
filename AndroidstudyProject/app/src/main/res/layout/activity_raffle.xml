@@ -60,6 +60,62 @@
             app:layout_constraintTop_toBottomOf="@id/textView3"
             tools:text="선택된 메뉴" />
 
+        <CheckBox
+            android:id="@+id/meatBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="육식"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/fruitBox"
+            app:layout_constraintEnd_toStartOf="@+id/fruitBox"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <CheckBox
+            android:id="@+id/fruitBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="과일"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toStartOf="@+id/diaryBox"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/meatBox"
+            app:layout_constraintTop_toBottomOf="@+id/detailSwitch" />
+
+        <CheckBox
+            android:id="@+id/diaryBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="유제품"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/fruitBox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/fruitBox" />
+
+        <Switch
+            android:id="@+id/detailSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="디테일"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <Spinner
+            android:id="@+id/categorySpinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:entries="@array/category"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="@+id/diaryBox"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/meatBox"
+            app:layout_constraintTop_toBottomOf="@+id/fruitBox" />
+
         <!--
             <CheckBox
                 android:id="@+id/checkbox_meat"

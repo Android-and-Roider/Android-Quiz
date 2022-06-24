@@ -9,18 +9,6 @@ class MainRepository(mDatabase: FoodDatabase) {
 
     var allFood: LiveData<List<Food>> = dao.getAll()
 
-    companion object {
-        private var sInstance: MainRepository? = null
-        fun getInstance(database: FoodDatabase): MainRepository {
-            return sInstance
-                ?: synchronized(this) {
-                    val instance = MainRepository(database)
-                    sInstance = instance
-                    instance
-                }
-        }
-    }
-
     fun insert(food: Food) {
         dao.insert(food)
     }
@@ -32,6 +20,23 @@ class MainRepository(mDatabase: FoodDatabase) {
     suspend fun select(): Food {
         delay(2500L)
         return dao.getRandom()
+    }
+
+    suspend fun selectDetail(category: String, meat: Boolean, fruit: Boolean, diary: Boolean) : Food {
+        delay(2500L)
+        return dao.getDetailRandom(category, meat, fruit, diary)
+    }
+
+    companion object {
+        private var sInstance: MainRepository? = null
+        fun getInstance(database: FoodDatabase): MainRepository {
+            return sInstance
+                ?: synchronized(this) {
+                    val instance = MainRepository(database)
+                    sInstance = instance
+                    instance
+                }
+        }
     }
 
 }

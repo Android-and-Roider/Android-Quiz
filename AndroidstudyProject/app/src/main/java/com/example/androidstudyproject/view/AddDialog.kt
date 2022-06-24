@@ -16,7 +16,7 @@ class AddDialog(context: Context) : Dialog(context), AdapterView.OnItemSelectedL
     var isMeat = false
     var isDiary = false
     var isFruit = false
-    var category = "일식"
+    var category = "기타"
 
     init {
         setCanceledOnTouchOutside(true)
@@ -53,11 +53,23 @@ class AddDialog(context: Context) : Dialog(context), AdapterView.OnItemSelectedL
         super.show()
     }
 
+    override fun dismiss() {
+        binding.apply {
+            this.addName.text.clear()
+            this.isDairy.isChecked = false
+            this.isFruit.isChecked = false
+            this.isMeat.isChecked = false
+        }
+        super.dismiss()
+    }
+
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
         category = parent?.getItemAtPosition(pos).toString()
     }
 
-    override fun onNothingSelected(p0: AdapterView<*>?) {}
+    override fun onNothingSelected(p0: AdapterView<*>?) {
+        category = "기타"
+    }
 
     private fun check() {
         if (binding.isFruit.isChecked) {

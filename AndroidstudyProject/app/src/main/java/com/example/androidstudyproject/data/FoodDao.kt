@@ -21,8 +21,7 @@ interface FoodDao {
     @Query("SELECT * FROM Food ORDER BY RANDOM() LIMIT 1")
     fun getRandom(): Food
 
-    /*  @Query("SELECT * FROM food WHERE is_fruit = :b AND is_dairy_product  ")
-      fun tmp(a: String, b: Boolean, c: Boolean)*/
-    // Todo<알아서 해라>
+    @Query("SELECT * FROM Food WHERE category =:category AND is_meat =:meat AND is_fruit =:fruit AND is_dairy_product =:diary ORDER BY RANDOM() LIMIT 1")
+    fun getDetailRandom(category: String, meat: Boolean, fruit: Boolean, diary: Boolean): Food
 
 }
