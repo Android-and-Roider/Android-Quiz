@@ -22,9 +22,9 @@ class MainRepository(mDatabase: FoodDatabase) {
         return dao.getRandom()
     }
 
-    suspend fun selectDetail(category: String, meat: Boolean, fruit: Boolean, diary: Boolean) : Food {
+    suspend fun selectDetail(category: String) : Food {
         delay(2500L)
-        return dao.getDetailRandom(category, meat, fruit, diary)
+        return dao.getDetailRandom(category)
     }
 
     companion object {

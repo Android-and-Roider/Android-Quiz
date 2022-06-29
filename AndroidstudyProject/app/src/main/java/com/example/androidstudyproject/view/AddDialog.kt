@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -13,9 +14,6 @@ import com.example.androidstudyproject.databinding.DialogAddBinding
 class AddDialog(context: Context) : Dialog(context), AdapterView.OnItemSelectedListener {
     private val binding: DialogAddBinding = DialogAddBinding.inflate(layoutInflater)
     private lateinit var onClickedListener: ButtonClickListener
-    var isMeat = false
-    var isDiary = false
-    var isFruit = false
     var category = "기타"
 
     init {
@@ -39,12 +37,8 @@ class AddDialog(context: Context) : Dialog(context), AdapterView.OnItemSelectedL
             dismiss()
         }
         binding.btnAdd.setOnClickListener {
-            check()
             onClickedListener.onClicked(
                 binding.addName.text.toString(),
-                isMeat,
-                isFruit,
-                isDiary,
                 category
             )
             dismiss()
@@ -56,35 +50,22 @@ class AddDialog(context: Context) : Dialog(context), AdapterView.OnItemSelectedL
     override fun dismiss() {
         binding.apply {
             this.addName.text.clear()
-            this.isDairy.isChecked = false
-            this.isFruit.isChecked = false
-            this.isMeat.isChecked = false
         }
         super.dismiss()
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
         category = parent?.getItemAtPosition(pos).toString()
+        Log.d("카테고리 선택", "onItemSelected: $category")
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
         category = "기타"
     }
 
-    private fun check() {
-        if (binding.isFruit.isChecked) {
-            isFruit = true
-        }
-        if (binding.isMeat.isChecked) {
-            isMeat = true
-        }
-        if (binding.isDairy.isChecked) {
-            isDiary = true
-        }
-    }
 
     interface ButtonClickListener {
-        fun onClicked(name: String, meat: Boolean, fruit: Boolean, dairy: Boolean, category: String)
+        fun onClicked(name: String, category: String)
     }
 
     fun setOnClickListener(listener: ButtonClickListener) {

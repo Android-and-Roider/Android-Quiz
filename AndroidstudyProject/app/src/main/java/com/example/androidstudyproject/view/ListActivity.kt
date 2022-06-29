@@ -32,12 +32,9 @@ class ListActivity : AppCompatActivity() {
             this.setOnClickListener(object : AddDialog.ButtonClickListener {
                 override fun onClicked(
                     name: String,
-                    meat: Boolean,
-                    fruit: Boolean,
-                    dairy: Boolean,
                     category: String
                 ) {
-                    val food = Food(name, category, meat, fruit, dairy)
+                    val food = Food(name, category)
                     viewModel.insertFood(food)
                 }
             })
